@@ -17,6 +17,9 @@ WinWait, PRIMU$ -- Configuration
 }
 
 
-click_backtesting_time_intervals_tab()
-; click from to radio button
-click_one_day_radio_button()
+enter_date(date_str) {
+  tokens := StrSplit(date_str, "-")
+  Msgbox % tokens[1]
+}
+
+enter_date("2019-10-03")
