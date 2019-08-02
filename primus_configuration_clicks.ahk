@@ -17,57 +17,34 @@ WinWait, PRIMU$ -- Configuration
 }
 
 
-enter_date(date_str) {
+enter_single_date(date_str) {
+  WinActivate, Primu$ 7
+  WinWait, Primu$ 7
+  ClickWrench()
+  sleep, 100
+
   tokens := StrSplit(date_str, "-")
   year := tokens[1]
   month := tokens[2]
   day := tokens[3]
+  jay_style := month . "/" . day . "/" . SubStr(year, 3)
+
 
   WinActivate, PRIMU$ -- Configuration
   WinWait, PRIMU$ -- Configuration
+
   click_backtesting_time_intervals_tab()
-  MouseClick, Left, 293, 76
+
+  click_one_day_radio_button()
+
+  MouseClick, Left, 190, 76
   sleep, 200
-  MouseClick, Left, 193,104
-  sleep, 100
-  MouseClick, Left, 100, 15
-  sleep, 100
-  MouseClick, Left, 100, 15
-  sleep, 100
-  MouseClick, Left, 120, 45
-  sleep, 100
-  MouseClick, Left, 120, 45
-  sleep, 100
 
-  if (month = 1)
-    MouseClick, Left, 27, 48
-  else if (month = 2)
-    MouseClick, Left, 74, 48
-  else if (month = 3)
-    MouseClick, Left, 120, 48
-  else if (month = 4)
-    MouseClick, Left, 165, 48
-  else if (month = 5)
-    MouseClick, Left, 27, 85
-  else if (month = 6)
-    MouseClick, Left, 74, 85
-  else if (month = 7)
-    MouseClick, Left, 120, 85
-  else if (month = 8)
-    MouseClick, Left, 165, 85
-  else if (month = 9)
-    MouseClick, Left, 27, 120
-  else if (month = 10)
-    MouseClick, Left, 74, 120
-  else if (month = 11)
-    MouseClick, Left, 120, 120
-  else if (month = 12)
-    MouseClick, Left, 165, 120
+  send, %jay_style%
 
-  ; chose day and year
-  
+  send, {tab}
 
+  MouseClick, Left, 519, 462
+  sleep, 200
 
 }
-
-enter_date("2012-02-03")

@@ -1,8 +1,7 @@
 
 ActivateLauncher()
 {
-  If WinExist("Primu$ 7")
-    and !WinActive("Primu$ 7")
+  If WinExist("Primu$ 7") 
     and !WinExist("PRIMU$ - Black Box Design")
     {
       WinActivate, Primu$ 7
